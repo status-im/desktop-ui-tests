@@ -3,6 +3,7 @@ import QtQuick.Window 2.14
 import QtTest 1.14
 
 import "status-desktop/ui/app/AppLayouts/Chat/components" as DesktopComponents
+import "stats"
 
 
 TestCase {
@@ -49,7 +50,7 @@ TestCase {
         width: 800
         height: 600
         DesktopComponents.ProfilePopup {
-            id: propfilePopup
+            id: profilePopup
         }
     }
     ///////
@@ -63,14 +64,14 @@ TestCase {
     }
 
     function test_case1() {
-        propfilePopup.openPopup(true, "Test user", "Some author", "", "bla bla test it bitch", "Nickname")
+        profilePopup.openPopup(true, "Test user", "Some author", "", "bla bla test it bitch", "Nickname")
         wait(2000) // for show how its works
-        print(propfilePopup.contentItem, propfilePopup.width - 65)
+        print(profilePopup.contentItem, profilePopup.width - 65)
         mouseClick(propfilePopup.background, propfilePopup.width - 65, 20, Qt.LeftButton)
         wait(2000) // for show how its works
-        verify(propfilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
-        propfilePopup.contentItem.qrCodePopup.close()
-        verify(!propfilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
+        verify(profilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
+        profilePopup.contentItem.qrCodePopup.close()
+        verify(!profilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
     }
 
     function test_case2() {
@@ -78,5 +79,6 @@ TestCase {
         wait(2000)
         verify(!propfilePopup.visible, "Profile popup should be invisible")
     }
+
 }
 
