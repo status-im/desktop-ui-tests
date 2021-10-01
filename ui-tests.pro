@@ -7,6 +7,8 @@ DESTDIR += $${PWD}/bin
 DEFINES += PROJECT_PATH=\"$${PWD}\"
 
 DISTFILES += \
+    base/Helpers.qml \
+    base/WindowTestCase.qml \
     tst_Modals.qml \
     tst_initialtest.qml
 

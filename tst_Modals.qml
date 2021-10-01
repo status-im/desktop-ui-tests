@@ -2,12 +2,15 @@ import QtQuick 2.14
 import QtQuick.Window 2.14
 import QtTest 1.14
 
+import "base"
 import "status-desktop/ui/app/AppLayouts/Chat/components" as DesktopComponents
 
 
 TestCase {
     name: "ProfilePopup"
     when: windowShown
+
+    Helpers { id: helpers }
 
     /// TODO: add good test data
     QtObject {
@@ -45,7 +48,7 @@ TestCase {
     }
 
     Window {
-        id: tstWindow
+        id: window
         width: 800
         height: 600
         DesktopComponents.ProfilePopup {
@@ -55,7 +58,7 @@ TestCase {
     ///////
 
     function initTestCase() {
-        tstWindow.show()
+        window.show()
     }
 
     function cleanupTestCase() {
@@ -65,8 +68,8 @@ TestCase {
     function test_case1() {
         propfilePopup.openPopup(true, "Test user", "Some author", "", "bla bla test it bitch", "Nickname")
         wait(2000) // for show how its works
-        print(propfilePopup.contentItem, propfilePopup.width - 65)
         mouseClick(propfilePopup.background, propfilePopup.width - 65, 20, Qt.LeftButton)
+        verify(helpers.checkIfItemExists(propfilePopup.background, propfilePopup.width - 65, 20, "StatusFlatRoundButton"))
         wait(2000) // for show how its works
         verify(propfilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
         propfilePopup.contentItem.qrCodePopup.close()
