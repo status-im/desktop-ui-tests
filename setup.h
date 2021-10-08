@@ -23,8 +23,7 @@ public slots:
     void qmlEngineAvailable(QQmlEngine *engine)
     {
         engine->rootContext()->setContextProperty("myContextProperty", QVariant(true));
-        qDebug() << "StatusQ Path: " << QString(PWD(PROJECT_PATH));
-        engine->addImportPath(QString(PWD(PROJECT_PATH)) + "/StatusQ/src");
+        engine->addImportPath(QString(PWD(PROJECT_PATH)) + "/status-desktop/ui/StatusQ/src");
         engine->addImportPath(QString(PWD(PROJECT_PATH)) + "/status-desktop/ui/imports");
     }
 };

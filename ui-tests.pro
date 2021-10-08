@@ -7,13 +7,14 @@ DESTDIR += $${PWD}/bin
 DEFINES += PROJECT_PATH=\"$${PWD}\"
 
 DISTFILES += \
+    base/ChatsModelData.qml \
     base/Helpers.qml \
+    base/ProfileModelData.qml \
     base/WindowTestCase.qml \
     tst_Modals.qml \
     tst_initialtest.qml
 
-DISTFILES += $$files("StatusQ/src/*", true)
-DISTFILES += $$files("status-desktop/ui/app/*", true)
+DISTFILES += $$files("status-desktop/ui/*", true)
 
 SOURCES += \
     main.cpp \
