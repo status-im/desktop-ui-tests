@@ -27,6 +27,23 @@ QtObject {
         return null
     }
 
+    function getObjectByObjectName(parent, objectName) {
+        for (var idx in parent.children) {
+            var child = parent.children[idx]
+
+            if (child.objectName === objectName) {
+                return child;
+            } else {
+                var res = getObjectByObjectName(child, objectName)
+                if (!!res) {
+                    return res;
+                }
+            }
+        }
+
+        return null;
+    }
+
     function findChildByClassName(item, className) {
         for (var idx in item.children) {
             let child = item.children[idx]

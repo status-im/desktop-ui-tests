@@ -1,6 +1,3 @@
-[submodule "StatusQ"]
-	path = StatusQ
-	url = https://github.com/status-im/StatusQ
 [submodule "status-desktop"]
 	path = status-desktop
 	url = https://github.com/status-im/status-desktop.git
