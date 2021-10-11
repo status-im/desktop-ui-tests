@@ -22,7 +22,7 @@ TestCase {
         }
 
         function alias(author) {
-            return "some alias"
+            return "0x044e25ab58dcb5a997288dce919a81b00a1c95513cbc17f3d9098c8fd69b863dd687e88ef190ab031ea89130982f312554ac2e13d42a0332ffc6fd7632111fafaf"
         }
     }
 
@@ -39,7 +39,7 @@ TestCase {
         }
 
         property var profile: QtObject {
-            property string pubKey: "Some author"
+            property string pubKey: "0x044e25ab58dcb5a997288dce919a81b00a1c95513cbc17f3d9098c8fd69b863dd687e88ef190ab031ea89130982f312554ac2e13d42a0332ffc6fd7632111fafaf"
         }
 
         function qrCode(author) {
@@ -52,7 +52,7 @@ TestCase {
         width: 800
         height: 600
         DesktopComponents.ProfilePopup {
-            id: propfilePopup
+            id: profilePopup
         }
     }
     ///////
@@ -66,20 +66,23 @@ TestCase {
     }
 
     function test_case1() {
-        propfilePopup.openPopup(true, "Test user", "Some author", "", "bla bla test it bitch", "Nickname")
+        // opens your own profile
+        profilePopup.openPopup(true,"Forceful Slateblue Purplemarten", "0x044e25ab58dcb5...2ffc6fd7632111fafaf")
         wait(2000) // for show how its works
-        mouseClick(propfilePopup.background, propfilePopup.width - 65, 20, Qt.LeftButton)
-        verify(helpers.checkIfItemExists(propfilePopup.background, propfilePopup.width - 65, 20, "StatusFlatRoundButton"))
-        wait(2000) // for show how its works
-        verify(propfilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
-        propfilePopup.contentItem.qrCodePopup.close()
-        verify(!propfilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
+        // checks that QR code button is present
+        //verify(helpers.checkIfItemExists(profilePopup.background, profilePopup.width - 60, 20, "StatusFlatRoundButton"))
+        // clicks QR code button
+        mouseClick(profilePopup.background, profilePopup.width - 60, 20, Qt.LeftButton)
+        //wait(2000) // for show how its works
+        verify(profilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
+        profilePopup.contentItem.qrCodePopup.close()
+        verify(!profilePopup.contentItem.qrCodePopup.visible, "Qr code should be visible")
     }
 
     function test_case2() {
-        mouseClick(propfilePopup.background, propfilePopup.width - 25, 20, Qt.LeftButton)
+        mouseClick(profilePopup.background, profilePopup.width - 25, 20, Qt.LeftButton)
         wait(2000)
-        verify(!propfilePopup.visible, "Profile popup should be invisible")
+        verify(profilePopup.visible, "Profile popup should be invisible")
     }
 }
 
