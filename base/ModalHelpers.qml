@@ -1,7 +1,7 @@
 import QtQuick 2.14
 
 import StatusQ.Core 0.1
-import StatusQ.Conntrols 0.1
+import StatusQ.Controls 0.1
 
 QtObject {
     id: root
@@ -15,8 +15,8 @@ QtObject {
     Component {
         id: headerComp
         QtObject {
-            property StatusbBaseText title
-            property StatusbBaseText subtitle
+            property StatusBaseText title
+            property StatusBaseText subtitle
             property StatusRoundImage avatar
             property StatusFlatRoundButton closeBtn
             property var actionButton
