@@ -37,7 +37,7 @@ WindowTestCase {
     }
 
 
-    function test_case_BeforeGetStartedModal_height_width() {
+    function test_case1_BeforeGetStartedModal_height_width() {
 
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
@@ -45,15 +45,23 @@ WindowTestCase {
         wait(2000)
         compare(beforeGetStartedModal.height, 318, "height should be 318")
         compare(beforeGetStartedModal.width, 480, "width should be 480")
-
-        var getStartedButton = Helpers
-        .getObjectByObjectName(beforeGetStartedModal, "getStartedBtn")
-        verify(!!getStartedButton, "Get Started Button is not present")
-        print (getStartedButton)
-
         beforeGetStartedModal.destroy()
+    }
+
+
+    function test_case2_BeforeGetStartedModal_button() {
+
+        var beforeGetStartedModal = popupComponent.createObject(window)
+        beforeGetStartedModal.open()
+        beforeGetStartedModal.title = "Before you get started ..."
+        wait(2000)
+        var getStartedButtonExists = helpers.checkIfItemExists(beforeGetStartedModal, 340, 260)
+        verify(getStartedButtonExists, true)
+        beforeGetStartedModal.destroy()
+        }
+
+
 
     }
 
-}
 
