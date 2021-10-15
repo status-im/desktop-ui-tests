@@ -3,7 +3,7 @@ import QtQuick.Window 2.14
 import QtTest 1.14
 
 import "base"
-import "status-desktop/ui/onboarding" as DesktopComponents
+import "status-desktop/ui/app/AppLayouts/Onboarding/popups" as DesktopComponents
 
 
 WindowTestCase {
@@ -45,6 +45,12 @@ WindowTestCase {
         wait(2000)
         compare(beforeGetStartedModal.height, 318, "height should be 318")
         compare(beforeGetStartedModal.width, 480, "width should be 480")
+
+        var getStartedButton = Helpers
+        .getObjectByObjectName(beforeGetStartedModal, "getStartedBtn")
+        verify(!!getStartedButton, "Get Started Button is not present")
+        print (getStartedButton)
+
         beforeGetStartedModal.destroy()
 
     }
