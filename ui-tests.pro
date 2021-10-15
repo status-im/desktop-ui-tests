@@ -9,6 +9,7 @@ DEFINES += PROJECT_PATH=\"$${PWD}\"
 DISTFILES += \
     base/ChatsModelData.qml \
     base/Helpers.qml \
+    base/ModalHelpers.qml \
     base/ProfileModelData.qml \
     base/WindowTestCase.qml \
     tst_choose_chat_name_modal.qml \
