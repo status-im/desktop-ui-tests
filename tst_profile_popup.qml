@@ -31,7 +31,7 @@ WindowTestCase {
     // Catching editClickedSignal
     SignalSpy {
         id: editClickedSpy
-        signalName: "editAvatarButtonClicked"
+        signalName: "headerImageClicked"
     }
 
     ///////
@@ -54,7 +54,7 @@ WindowTestCase {
         propfilePopup.destroy()
     }
 
-    function test_case2CurrentUser() {
+    function test_case2_current_user() {
         profileModel.profile.pubKey = "current-user"
         var propfilePopup = popupComponent.createObject(window)
         wait(2000)
@@ -62,9 +62,9 @@ WindowTestCase {
         editClickedSpy.target = propfilePopup
         verify(propfilePopup.isCurrentUser, "User should be current")
         wait(5000)
-        var editbButton = helpers.getObjectByObjectName(propfilePopup.background, "editAvatarButton")
-        verify(!!editbButton, "object with name \"editAvatarButton\" not found")
-        verify(editbButton.visible, "editAvatarButton should be visible")
+        var editbButton = helpers.getObjectByObjectName(propfilePopup.background, "editAvatarImage")
+        verify(!!editbButton, "object with name \"editAvatarImage\" not found")
+        verify(editbButton.visible, "editAvatarImage should be visible")
 
         compare(editClickedSpy.count, 0)
         mouseClick(editbButton, 1, 1, Qt.LeftButton)
@@ -73,16 +73,16 @@ WindowTestCase {
         propfilePopup.destroy()
     }
 
-    function test_case3NotCurrentUser() {
+    function test_case3_not_current_user() {
         profileModel.profile.pubKey = "another-user"
         var propfilePopup = popupComponent.createObject(window)
         wait(2000)
         propfilePopup.openPopup(true, "Test user", "current-user", "", "bla bla test it bitch", "Nickname")
         wait(5000)
         verify(!propfilePopup.isCurrentUser, "User should be is not current")
-        var editbButton = helpers.getObjectByObjectName(propfilePopup.background, "editAvatarButton")
-        verify(!!editbButton, "object with name \"editAvatarButton\" not found")
-        verify(!editbButton.visible, "editAvatarButton should be not visible")
+        var editbButton = helpers.getObjectByObjectName(propfilePopup.background, "editAvatarImage")
+        verify(!!editbButton, "object with name \"editAvatarImage\" not found")
+        verify(!editbButton.visible, "editAvatarImage should be not visible")
         propfilePopup.destroy()
     }
 }
