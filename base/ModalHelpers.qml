@@ -17,7 +17,7 @@ QtObject {
         QtObject {
             property StatusBaseText title
             property StatusBaseText subtitle
-            property StatusRoundImage avatar
+            property StatusRoundedImage avatar
             property StatusFlatRoundButton closeBtn
             property var actionButton
         }
