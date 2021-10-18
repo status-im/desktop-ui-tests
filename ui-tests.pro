@@ -1,4 +1,4 @@
-CONFIG += warn_on qmltestcase
+CONFIG += warn_on qmltestcase qtquickcompiler
 
 TEMPLATE = app
 
@@ -20,9 +20,14 @@ DISTFILES += \
 
 DISTFILES += $$files("status-desktop/ui/*", true)
 
+QML_IMPORT_PATH += status-desktop/ui/
+
 SOURCES += \
     main.cpp \
     setup.cpp
 
 HEADERS += \
     setup.h
+
+RESOURCES += \
+    tests.qrc
