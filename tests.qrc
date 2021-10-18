@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>tst_choose_chat_name_modal.qml</file>
+        <file>tst_get_started_modal.qml</file>
+        <file>tst_initialtest.qml</file>
+        <file>tst_onboarding_choose_chat_name_modal.qml</file>
+        <file>tst_profile_popup.qml</file>
+        <file>base/ChatsModelData.qml</file>
+        <file>base/Helpers.qml</file>
+        <file>base/LegacyModalsHelpers.qml</file>
+        <file>base/ModalHelpers.qml</file>
+        <file>base/ProfileModelData.qml</file>
+        <file>base/WindowTestCase.qml</file>
+    </qresource>
+</RCC>
