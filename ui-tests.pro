@@ -20,7 +20,7 @@ DISTFILES += \
 
 DISTFILES += $$files("status-desktop/ui/*", true)
 
-QML_IMPORT_PATH += status-desktop/ui/
+QML_IMPORT_PATH += status-desktop/ui/StatusQ/src
 
 SOURCES += \
     main.cpp \
