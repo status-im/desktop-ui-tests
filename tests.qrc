@@ -11,5 +11,6 @@
         <file>base/ModalHelpers.qml</file>
         <file>base/ProfileModelData.qml</file>
         <file>base/WindowTestCase.qml</file>
+        <file>tst_chatinfotoolbar.qml</file>
     </qresource>
 </RCC>

@@ -7,10 +7,16 @@ TestCase {
     id: root
 
     readonly property Window window: baseWindow
+    readonly property Item windowContent: contentWindow
 
     Window {
         id: baseWindow
         width: 800
         height: 600
+
+        Item {
+            id: contentWindow
+            anchors.fill: parent
+        }
     }
 }
