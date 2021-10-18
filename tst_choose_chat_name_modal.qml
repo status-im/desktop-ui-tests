@@ -3,7 +3,7 @@ import QtQuick.Window 2.14
 import QtTest 1.14
 
 import "base"
-import "status-desktop/ui/onboarding" as DesktopComponents
+import "status-desktop/ui/app/AppLayouts/Onboarding/popups" as DesktopComponents
 
 
 WindowTestCase {

@@ -12,5 +12,6 @@
         <file>base/ProfileModelData.qml</file>
         <file>base/WindowTestCase.qml</file>
         <file>tst_chatinfotoolbar.qml</file>
+        <file>tst_statuslistitem.qml</file>
     </qresource>
 </RCC>
