@@ -16,7 +16,8 @@ DISTFILES += \
     tst_choose_chat_name_modal.qml \
     tst_get_started_modal.qml \
     tst_initialtest.qml \
-    tst_profile_popup.qml
+    tst_profile_popup.qml \
+    tst_statusButton.qml
 
 DISTFILES += $$files("status-desktop/ui/*", true)
 

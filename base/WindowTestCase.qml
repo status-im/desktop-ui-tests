@@ -18,5 +18,7 @@ TestCase {
             id: contentWindow
             anchors.fill: parent
         }
+
+        visible: true
     }
 }
