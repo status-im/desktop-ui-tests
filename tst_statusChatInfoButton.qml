@@ -59,5 +59,19 @@ WindowTestCase {
         statusChatInfoButton.destroy()
     }
 
+    function test_case2_statusChatInfoButton_unmuted() {
+        var statusChatInfoButton = popupComponent.createObject(window)
+        statusChatInfoButton.title = "#public"
+        statusChatInfoButton.muted = true
+        wait(2000)
+        var mutedButton = helpers.getObjectByObjectName(statusChatInfoButton, "muted")
+        statusChatInfoButtonUnmuteSpy.target = statusChatInfoButton
+        compare(statusChatInfoButtonUnmuteSpy.count, 0)
+        mouseClick(mutedButton, 2, 2, Qt.LeftButton)
+        wait(2000)
+        compare(statusChatInfoButtonUnmuteSpy.count, 1, "Muted button is not clicked")
+        statusChatInfoButton.destroy()
+    }
+
 }
 
