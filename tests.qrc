@@ -13,5 +13,6 @@
         <file>base/WindowTestCase.qml</file>
         <file>tst_chatinfotoolbar.qml</file>
         <file>tst_statuslistitem.qml</file>
+        <file>tst_statusexpandableitem.qml</file>
     </qresource>
 </RCC>
