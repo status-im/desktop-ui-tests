@@ -49,7 +49,7 @@ WindowTestCase {
     function test_case1_statusChatInfoButton_clicked() {
 
         var statusChatInfoButton = popupComponent.createObject(window)
-        statusChatInfoButton.title = "Status Chat Info Button"
+        statusChatInfoButton.title = "Status-Chat-Info-Button"
         wait(2000)
         statusChatInfoButtonClickedSpy.target = statusChatInfoButton
         compare(statusChatInfoButtonClickedSpy.count, 0)
@@ -71,6 +71,23 @@ WindowTestCase {
         wait(2000)
         compare(statusChatInfoButtonUnmuteSpy.count, 1, "Muted button is not clicked")
         statusChatInfoButton.destroy()
+    }
+
+    function test_case3_statusChatInfoButton_pinned() {
+
+        var statusChatInfoButton = popupComponent.createObject(window)
+        statusChatInfoButton.title = "#community-channel"
+        statusChatInfoButton.muted = false
+        statusChatInfoButton.pinnedMessagesCount = 2
+        wait(2000)
+        var pinButtonCounter = helpers.getObjectByObjectName(statusChatInfoButton, "pinMessagesCounter")
+        pinnedMessagesClickedSpy.target = statusChatInfoButton
+        compare(pinnedMessagesClickedSpy.count, 0)
+        mouseClick(pinButtonCounter, 1, 1, Qt.LeftButton)
+        wait(2000)
+        compare(pinnedMessagesClickedSpy.count, 1, "Pin counter is not clicked")
+        statusChatInfoButton.destroy()
+
     }
 
 }
