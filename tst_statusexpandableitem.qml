@@ -25,14 +25,6 @@ WindowTestCase {
         }
     }
 
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
     function test_expand() {
         verify(!expandableItem.expanded)
 

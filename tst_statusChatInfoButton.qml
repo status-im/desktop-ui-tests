@@ -36,16 +36,6 @@ WindowTestCase {
     }
 
 
-
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
-
     function test_case1_statusChatInfoButton_clicked() {
 
         var statusChatInfoButton = popupComponent.createObject(window)

@@ -21,4 +21,12 @@ TestCase {
 
         visible: true
     }
+
+    function initTestCase() {
+        window.show()
+    }
+
+    function cleanupTestCase() {
+        window.close()
+    }
 }
