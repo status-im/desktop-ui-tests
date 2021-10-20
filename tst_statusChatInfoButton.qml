@@ -54,7 +54,7 @@ WindowTestCase {
         statusChatInfoButton.title = "#public"
         statusChatInfoButton.muted = true
         wait(2000)
-        var mutedButton = helpers.getObjectByObjectName(statusChatInfoButton, "muted")
+        var mutedButton = helpers.getObjectByObjectName(statusChatInfoButton, "mutedIcon")
         statusChatInfoButtonUnmuteSpy.target = statusChatInfoButton
         compare(statusChatInfoButtonUnmuteSpy.count, 0)
         mouseClick(mutedButton, 2, 2, Qt.LeftButton)
@@ -67,10 +67,9 @@ WindowTestCase {
 
         var statusChatInfoButton = popupComponent.createObject(window)
         statusChatInfoButton.title = "#community-channel"
-        statusChatInfoButton.muted = false
         statusChatInfoButton.pinnedMessagesCount = 2
         wait(2000)
-        var pinButtonCounter = helpers.getObjectByObjectName(statusChatInfoButton, "pinMessagesCounter")
+        var pinButtonCounter = helpers.getObjectByObjectName(statusChatInfoButton, "pinMessagesCounterSensor")
         pinnedMessagesClickedSpy.target = statusChatInfoButton
         compare(pinnedMessagesClickedSpy.count, 0)
         mouseClick(pinButtonCounter, 1, 1, Qt.LeftButton)
