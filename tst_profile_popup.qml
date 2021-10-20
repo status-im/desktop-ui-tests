@@ -36,14 +36,6 @@ WindowTestCase {
 
     ///////
 
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
     function test_case1() {
         var propfilePopup = popupComponent.createObject(window)
         propfilePopup.openPopup(true, "Test user", "Some author", "", "bla bla test it bitch", "Nickname")

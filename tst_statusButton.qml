@@ -41,16 +41,6 @@ WindowTestCase {
     }
 
 
-
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
-
     function test_case1_statusButton_clicked() {
 
         var statusButton = popupComponent.createObject(window)

@@ -72,15 +72,6 @@ WindowTestCase {
     }
 
 
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
-
     function test_case_ChooseChatNameModal_height_width() {
 
         var genKeyModal = popupComponent.createObject(window)

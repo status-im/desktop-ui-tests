@@ -30,14 +30,6 @@ WindowTestCase {
         subTitle: "Subtitle"
     }
 
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
     function test_clickFunctions() {
         // Verify than signal exists
         verify(clickedSpy.valid, "Signal " + clickedSpy.signalName + "is not valid")

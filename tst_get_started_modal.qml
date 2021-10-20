@@ -26,17 +26,6 @@ WindowTestCase {
     }
 
 
-
-
-    function initTestCase() {
-        window.show()
-    }
-
-    function cleanupTestCase() {
-        window.close()
-    }
-
-
     function test_case1_BeforeGetStartedModal_height_width() {
 
         var beforeGetStartedModal = popupComponent.createObject(window)
