@@ -3,79 +3,75 @@ import QtQuick.Window 2.14
 import QtTest 1.14
 
 import "base"
-import "status-desktop/ui/StatusQ/src/StatusQ/Controls" as DesktopControls
+import StatusQ.Controls 0.1
+import StatusQ.Popups 0.1
 
 WindowTestCase {
-    name: "statusChatInfoButton"
-    when: windowShown
+    name: "statusChatInfoButton test"
 
     Helpers { id: helpers }
 
-
-    Component {
-        id: popupComponent
-        DesktopControls.StatusChatInfoButton {
-            id: statusChatInfoButton
-        }
-    }
-
-
     SignalSpy {
-        id: statusChatInfoButtonClickedSpy
+        id: clickedSpy
+        target: chatInfoButton
         signalName: "clicked"
     }
 
     SignalSpy {
-        id: statusChatInfoButtonUnmuteSpy
+        id: unmuteSpy
+        target: chatInfoButton
         signalName: "unmute"
     }
 
     SignalSpy {
-        id: pinnedMessagesClickedSpy
+        id: pinnedCounterSpy
+        target: chatInfoButton
         signalName: "pinnedMessagesCountClicked"
     }
 
-
-    function test_case1_statusChatInfoButton_clicked() {
-
-        var statusChatInfoButton = popupComponent.createObject(window)
-        statusChatInfoButton.title = "Status-Chat-Info-Button"
-        wait(2000)
-        statusChatInfoButtonClickedSpy.target = statusChatInfoButton
-        compare(statusChatInfoButtonClickedSpy.count, 0)
-        mouseClick(statusChatInfoButton, 1, 1, Qt.LeftButton)
-        wait(2000)
-        compare(statusChatInfoButtonClickedSpy.count, 1, "Status Chat info button was not clicked")
-        statusChatInfoButton.destroy()
+    StatusChatInfoButton {
+        id: chatInfoButton
+        parent: windowContent
+        title: "#public-chat"
+        subTitle: "chat-about-everything"
+        muted: true
+        pinnedMessagesCount: 3
     }
 
-    function test_case2_statusChatInfoButton_unmuted() {
-        var statusChatInfoButton = popupComponent.createObject(window)
-        statusChatInfoButton.title = "#public"
-        statusChatInfoButton.muted = true
-        wait(2000)
-        var mutedButton = helpers.getObjectByObjectName(statusChatInfoButton, "mutedIcon")
-        statusChatInfoButtonUnmuteSpy.target = statusChatInfoButton
-        compare(statusChatInfoButtonUnmuteSpy.count, 0)
+    function test_case1_statusChatInfoButton_signals_valid() {
+
+        // checking if signals are present
+        verify(clickedSpy.valid, "Signal " + clickedSpy.signalName + "is not found")
+        verify(unmuteSpy.valid, "Signal " + unmuteSpy.signalName + "is not found")
+        verify(pinnedCounterSpy.valid, "Signal " + pinnedCounterSpy.signalName + "is not found")
+    }
+
+    function test_case2_statusChatInfoButton_clicked() {
+
+        compare(clickedSpy.count, 0)
+        mouseClick(chatInfoButton, 1, 1, Qt.LeftButton)
+        wait(10000)
+        compare(clickedSpy.count, 1, "Status Chat info button was not clicked")
+    }
+
+    function test_case3_statusChatInfoButton_unmuted() {
+
+        unmuteSpy.clear()
+        var mutedButton = helpers.getObjectByObjectName(chatInfoButton, "mutedIcon")
+        verify(mutedButton)
+        compare(unmuteSpy.count, 0)
         mouseClick(mutedButton, 2, 2, Qt.LeftButton)
-        wait(2000)
-        compare(statusChatInfoButtonUnmuteSpy.count, 1, "Muted button is not clicked")
-        statusChatInfoButton.destroy()
+        compare(unmuteSpy.count, 1, "Muted button is not clicked")
     }
 
-    function test_case3_statusChatInfoButton_pinned() {
+    function test_case4_statusChatInfoButton_pinned() {
 
-        var statusChatInfoButton = popupComponent.createObject(window)
-        statusChatInfoButton.title = "#community-channel"
-        statusChatInfoButton.pinnedMessagesCount = 2
-        wait(2000)
-        var pinButtonCounter = helpers.getObjectByObjectName(statusChatInfoButton, "pinMessagesCounterSensor")
-        pinnedMessagesClickedSpy.target = statusChatInfoButton
-        compare(pinnedMessagesClickedSpy.count, 0)
+        pinnedCounterSpy.clear()
+        var pinButtonCounter = helpers.getObjectByObjectName(chatInfoButton, "pinMessagesCounterSensor")
+        verify(pinButtonCounter)
+        compare(pinnedCounterSpy.count, 0)
         mouseClick(pinButtonCounter, 1, 1, Qt.LeftButton)
-        wait(2000)
-        compare(pinnedMessagesClickedSpy.count, 1, "Pin counter is not clicked")
-        statusChatInfoButton.destroy()
+        compare(pinnedCounterSpy.count, 1, "Pin counter is not clicked")
 
     }
 
