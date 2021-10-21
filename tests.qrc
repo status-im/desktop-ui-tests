@@ -3,7 +3,6 @@
         <file>tst_choose_chat_name_modal.qml</file>
         <file>tst_get_started_modal.qml</file>
         <file>tst_initialtest.qml</file>
-        <file>tst_onboarding_choose_chat_name_modal.qml</file>
         <file>tst_profile_popup.qml</file>
         <file>base/ChatsModelData.qml</file>
         <file>base/Helpers.qml</file>
