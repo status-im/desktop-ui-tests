@@ -8,7 +8,8 @@ DEFINES += PROJECT_PATH=\"$${PWD}\"
 
 #DISTFILES += $$
 
-DISTFILES += $$files("$$PWD/*.qml", true)
+DISTFILES += $$files("$$PWD/*.qml", true) \
+    tst_statusChatListCategoryItemButton.qml
 
 QML_IMPORT_PATH += status-desktop/ui/StatusQ/src
 
