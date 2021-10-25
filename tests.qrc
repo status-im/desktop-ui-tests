@@ -14,5 +14,6 @@
         <file>tst_statuslistitem.qml</file>
         <file>tst_statusexpandableitem.qml</file>
         <file>tst_status_switch.qml</file>
+        <file>tst_status_picker_button.qml</file>
     </qresource>
 </RCC>
