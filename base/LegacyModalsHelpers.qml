@@ -1,11 +1,13 @@
 import QtQuick 2.14
 
-import "../status-desktop/ui/shared" as Shared
+import "../status-desktop/ui/shared/popups" as SharedPopups
+import "../status-desktop/ui/shared/panels" as SharedPanels
+
 
 QtObject {
     id: root
 
-    property Shared.ModalPopup target: null
+    property SharedPopups.ModalPopup target: null
 
     property var header
     property var contentItem
@@ -13,10 +15,9 @@ QtObject {
 
     property Helpers __helpers: Helpers {}
 
-    Component {
-        id: headerComp
+    property var headerComp: Component {
         QtObject {
-            property Shared.StyledText title: null
+            property SharedPanels.StyledText title: null
             property var closeButton: null
         }
     }
@@ -37,11 +38,10 @@ QtObject {
         return null
     }
 
-    Component {
-        id: cbComponent
+    property var cbComponent: Component {
         QtObject {
             property Rectangle background: null
-            property Shared.SVGImage icon: null
+            property SharedPanels.SVGImage icon: null
             property MouseArea sensor: null
 
             function click() {
