@@ -28,6 +28,13 @@ QtObject {
     }
 
     function getObjectByObjectName(parent, objectName) {
+        if (!parent) {
+            return null;
+        }
+
+        if (parent.objectName === objectName) {
+            return parent
+        }
         for (var idx in parent.children) {
             var child = parent.children[idx]
 

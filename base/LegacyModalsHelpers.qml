@@ -59,6 +59,7 @@ QtObject {
             headerNew.title = __helpers.getObjectByObjectName(hdr, "titleText")
 
             var clbtn = __helpers.getObjectByObjectName(__helpers.getObjectByObjectName(target.contentItem, "closeButtonRectangle"))
+
             var icon = __helpers.getObjectByObjectName(clbtn, "closeImage")
             var sensor = __helpers.getObjectByObjectName(clbtn, "closeSensor")
             headerNew.closeButton = cbComponent.createObject(null, {
@@ -69,6 +70,7 @@ QtObject {
             root.header = headerNew
 
             root.contentItem = __helpers.getObjectByObjectName(target.contentItem, "contentParent")
+
             root.footer = __helpers.getObjectByObjectName(target.contetItem, "footerParent")
         }
     }
