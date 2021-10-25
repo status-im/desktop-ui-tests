@@ -13,5 +13,6 @@
         <file>tst_chatinfotoolbar.qml</file>
         <file>tst_statuslistitem.qml</file>
         <file>tst_statusexpandableitem.qml</file>
+        <file>tst_status_switch.qml</file>
     </qresource>
 </RCC>
