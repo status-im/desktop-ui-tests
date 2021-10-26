@@ -33,8 +33,8 @@ WindowTestCase {
 
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
-        legacyHelpers.target = beforeGetStartedModal
-        var getStartedButton = legacyHelpers.findInFooter("getStartedStatusButton")
+        var getStartedButton = findChild(beforeGetStartedModal, "getStartedStatusButton")
+        print (getStartedButton)
         mouseClick(getStartedButton, getStartedButton.width/2, getStartedButton.height/2, Qt.LeftButton)
         verify(!getStartedButton.enabled, "Get Started Button is enabled")
         beforeGetStartedModal.destroy()
@@ -48,8 +48,9 @@ WindowTestCase {
         mouseClick(acknowledgeCheckBox, acknowledgeCheckBox.width/2, acknowledgeCheckBox.height/2, Qt.LeftButton)
         var termsOfUseCheckBox = legacyHelpers.findInContent("termsOfUseCheckBox")
         mouseClick(termsOfUseCheckBox, termsOfUseCheckBox.width/2, termsOfUseCheckBox.height/2, Qt.LeftButton)
-        var getStartedButton = legacyHelpers.findInFooter("getStartedStatusButton")
-        verify(!getStartedButton.enabled, "Get Started Button is enabled")
+        var getStartedButton = findChild(beforeGetStartedModal, "getStartedStatusButton")
+        verify(getStartedButton.enabled, "Get Started Button is disabled")
+        wait(2000)
         mouseClick(getStartedButton, getStartedButton.width/2, getStartedButton.height/2, Qt.LeftButton)
         beforeGetStartedModal.destroy()
     }
@@ -57,15 +58,15 @@ WindowTestCase {
     function test_case4_beforeGetStartedModal_TOU_click() {
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
-        legacyHelpers.target = beforeGetStartedModal
-        var termsOfUseLink = legacyHelpers.findInContent("termsOfUseLink")
+        //legacyHelpers.target = beforeGetStartedModal
+        var termsOfUseLink = findChild(beforeGetStartedModal, "termsOfUseCheckBox")
         mouseClick(termsOfUseLink, 2, 2, Qt.LeftButton)
     }
 
     function test_case5_beforeGetStartedModal_privacy_policy_click() {
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
-        legacyHelpers.target = beforeGetStartedModal
+        //legacyHelpers.target = beforeGetStartedModal
         var privacyPolicyLink = findChild(beforeGetStartedModal, "privacyPolicyLink")
         mouseClick(privacyPolicyLink, 2, 2, Qt.LeftButton)
     }
