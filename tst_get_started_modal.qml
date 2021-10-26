@@ -29,14 +29,15 @@ WindowTestCase {
     }
 
 
-    function test_case2_BeforeGetStartedModal_button_disabled() {
+    function test_case2_BeforeGetStartedModal_button_ui() {
 
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
         var getStartedButton = findChild(beforeGetStartedModal, "getStartedStatusButton")
-        print (getStartedButton)
         mouseClick(getStartedButton, getStartedButton.width/2, getStartedButton.height/2, Qt.LeftButton)
         verify(!getStartedButton.enabled, "Get Started Button is enabled")
+        compare(getStartedButton.width, 130, "getStartedButton width should be 130 px")
+        compare(getStartedButton.height, 44, "getStartedButton height should be 44 px")
         beforeGetStartedModal.destroy()
         }
 
