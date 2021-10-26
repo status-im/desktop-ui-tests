@@ -23,8 +23,6 @@ WindowTestCase {
 
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
-        beforeGetStartedModal.title = "Before you get started ..."
-        wait(2000)
         compare(beforeGetStartedModal.height, 318, "height should be 318")
         compare(beforeGetStartedModal.width, 480, "width should be 480")
         beforeGetStartedModal.destroy()
@@ -35,12 +33,9 @@ WindowTestCase {
 
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
-        beforeGetStartedModal.title = "Before you get started ..."
-        wait(2000)
         legacyHelpers.target = beforeGetStartedModal
         var getStartedButton = legacyHelpers.findInFooter("getStartedStatusButton")
-        print (getStartedButton)
-        mouseClick(getStartedButton, 2, 2, Qt.LeftButton)
+        mouseClick(getStartedButton, getStartedButton.width/2, getStartedButton.height/2, Qt.LeftButton)
         verify(!getStartedButton.enabled, "Get Started Button is enabled")
         beforeGetStartedModal.destroy()
         }
@@ -48,21 +43,31 @@ WindowTestCase {
     function test_case3_BeforeGetStartedModal_button_enabled() {
         var beforeGetStartedModal = popupComponent.createObject(window)
         beforeGetStartedModal.open()
-        wait(2000)
         legacyHelpers.target = beforeGetStartedModal
         var acknowledgeCheckBox = legacyHelpers.findInContent("acknowledgeCheckBox")
-        print(acknowledgeCheckBox)
         mouseClick(acknowledgeCheckBox, acknowledgeCheckBox.width/2, acknowledgeCheckBox.height/2, Qt.LeftButton)
-        wait(2000)
         var termsOfUseCheckBox = legacyHelpers.findInContent("termsOfUseCheckBox")
-        print(termsOfUseCheckBox)
         mouseClick(termsOfUseCheckBox, termsOfUseCheckBox.width/2, termsOfUseCheckBox.height/2, Qt.LeftButton)
-        wait(2000)
-        var getStartedButton = legacyHelpers.findInContent("getStartedStatusButton")
-        print(getStartedButton)
+        var getStartedButton = legacyHelpers.findInFooter("getStartedStatusButton")
         verify(!getStartedButton.enabled, "Get Started Button is enabled")
-        mouseClick(getStartedButton, 2, 2, Qt.LeftButton)
+        mouseClick(getStartedButton, getStartedButton.width/2, getStartedButton.height/2, Qt.LeftButton)
         beforeGetStartedModal.destroy()
+    }
+
+    function test_case4_beforeGetStartedModal_TOU_click() {
+        var beforeGetStartedModal = popupComponent.createObject(window)
+        beforeGetStartedModal.open()
+        legacyHelpers.target = beforeGetStartedModal
+        var termsOfUseLink = legacyHelpers.findInContent("termsOfUseLink")
+        mouseClick(termsOfUseLink, 2, 2, Qt.LeftButton)
+    }
+
+    function test_case5_beforeGetStartedModal_privacy_policy_click() {
+        var beforeGetStartedModal = popupComponent.createObject(window)
+        beforeGetStartedModal.open()
+        legacyHelpers.target = beforeGetStartedModal
+        var privacyPolicyLink = findChild(beforeGetStartedModal, "privacyPolicyLink")
+        mouseClick(privacyPolicyLink, 2, 2, Qt.LeftButton)
     }
 
 }
