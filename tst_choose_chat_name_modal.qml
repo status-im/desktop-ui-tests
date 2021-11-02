@@ -7,18 +7,21 @@ import "status-desktop/ui/app/AppLayouts/Onboarding/popups" as DesktopComponents
 
 
 WindowTestCase {
-    name: "ChooseChatName"
-    when: windowShown
+    name: "GenKeyModal tests"
 
-    Helpers { id: helpers }
+    LegacyModalsHelpers {id: legacyHelpers}
 
 
-    ChatsModelData {
-        id: chatsModel
+    Component {
+        id: popupComponent
+        DesktopComponents.GenKeyModal {
+            id: genKeyModal
+        }
     }
 
+
     ListModel {
-        id: onboardingModel
+        id: onBoardingModel
 
         ListElement {
                     username: "Three-Words-Name-1"
@@ -57,22 +60,8 @@ WindowTestCase {
 
     }
 
-    Component {
-        id: popupComponent
-        DesktopComponents.GenKeyModal {
-            id: chooseChatNameModal
-        }
-    }
 
-    // Catching Signal when Submit arrow button is clicked
-
-    SignalSpy {
-        id: submitArrowClickedSpy
-        signalName: "submitArrowButtonClicked"
-    }
-
-
-    function test_case_ChooseChatNameModal_height_width() {
+    function test_case1_Gen_key_modal_height_width() {
 
         var genKeyModal = popupComponent.createObject(window)
         genKeyModal.open()
@@ -80,6 +69,16 @@ WindowTestCase {
         compare(genKeyModal.height, 504, "height should be 504")
         compare(genKeyModal.width, 480, "width should be 480")
         genKeyModal.destroy()
+    }
+
+    function test_case2_Gen_key_modal_ui() {
+
+        var genKeyModal = popupComponent.createObject(window)
+        genKeyModal.open()
+        legacyHelpers.target = genKeyModal
+        var nextButton = findChild(genKeyModal, "submitBtn")
+        mouseClick(nextButton, nextButton.width/2, nextButton.height/2, Qt.LeftButton)
+        wait(2000)
 
     }
 
