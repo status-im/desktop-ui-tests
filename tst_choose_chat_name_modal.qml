@@ -76,7 +76,7 @@ WindowTestCase {
         var genKeyModal = popupComponent.createObject(window)
         genKeyModal.open()
         legacyHelpers.target = genKeyModal
-        var nextButton = findChild(genKeyModal, "submitBtn")
+        var nextButton = findChild(genKeyModal, "rightArrowSubmitBtn")
         mouseClick(nextButton, nextButton.width/2, nextButton.height/2, Qt.LeftButton)
         wait(2000)
 
